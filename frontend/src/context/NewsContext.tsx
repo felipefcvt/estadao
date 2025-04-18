@@ -24,6 +24,7 @@ export interface News {
 
 interface NewsContextType {
     news: News[];
+    isLoading: boolean;
     fetchNews: () => void;
     addNews: (data: any) => Promise<void>;
     editNews: (id: number, data: any) => Promise<void>;
@@ -35,6 +36,7 @@ const NewsContext = createContext({} as NewsContextType);
 
 export const NewsProvider = ({ children }: { children: React.ReactNode }) => {
     const [news, setNews] = useState<News[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchNews = async () => {
         try {
@@ -42,6 +44,8 @@ export const NewsProvider = ({ children }: { children: React.ReactNode }) => {
             setNews(res.data);
         } catch (err) {
             toast.error('Erro ao buscar as notícias');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -85,7 +89,7 @@ export const NewsProvider = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     return (
-        <NewsContext.Provider value={{ news, fetchNews, addNews, editNews, removeNews, getNewsById: getNewsByIdAsync }}>
+        <NewsContext.Provider value={{ news, isLoading, fetchNews, addNews, editNews, removeNews, getNewsById: getNewsByIdAsync }}>
             {children}
         </NewsContext.Provider>
     );
