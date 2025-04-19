@@ -31,4 +31,4 @@ git clone https://github.com/felipefcvt/estadao.git
 cd estadao
 
 # 3. Suba os containers (backend, frontend e banco de dados)
-docker-compose up --build -d
+docker-compose up -d
