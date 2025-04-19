@@ -9,7 +9,7 @@ Gerenciamento de notícias com API construída em NestJS, banco de dados Postgre
 - **Backend:** NestJS + Prisma + PostgreSQL
 - **Frontend:** Next.js 14 (App Router) + TailwindCSS + Context API
 - **Docker:** Orquestração de containers para ambiente de desenvolvimento
-- **Swagger:** Documentação da API em `/docs`
+- **Swagger:** Documentação da API em `http://localhost:3000/docs`
 
 ---
 
