@@ -24,7 +24,6 @@ services:
       DATABASE_URL: postgres://user:password@postgres:5432/estadao
     depends_on:
       - postgres
-    command: sh -c "npx prisma migrate deploy && npm run start:dev"
     volumes:
       - ./backend:/app
       - /app/node_modules
